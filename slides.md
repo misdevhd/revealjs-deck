@@ -1,4 +1,4 @@
-<img class="hero-logo" src="images/Logo%20-%20Cheng%20%20Co%20Group_%20v1%20Official%20logo_%202025.png" alt="Logo" />
+<img class="hero-logo" src="images/Logo%20-%20Cheng%20%26%20Co%20Group_%20v1%20Official%20logo_%202025.png" alt="Logo" />
 # Strategic Goal Setting & Implementation Plan
 <p class="subtitle">A practical framework to align goals, objectives, KPIs and execution.</p>
 <!-- .slide: class="cover" -->
