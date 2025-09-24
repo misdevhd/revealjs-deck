@@ -77,7 +77,14 @@
 
 
       /* Typography scale: bigger and differentiated headings/subtitle/body */
-      :root { --slide-base: 32px; --slide-pad-inline: clamp(20px, 4vw, 64px); --slide-pad-block: clamp(20px, 3vh, 56px); }
+      :root {
+        --slide-base: 32px;
+        --slide-pad-inline: clamp(20px, 4vw, 64px);
+        --slide-pad-block: clamp(20px, 3vh, 56px);
+        --gap: clamp(16px, 2vw, 36px);
+        --muted: #475569; /* slate-600 */
+        --accent: #4f46e5; /* indigo-600 */
+      }
       .reveal { font-size: var(--slide-base); }
       .reveal h1 { font-size: 3.2em; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 0.35em; font-weight: 800; }
       .reveal h2 { font-size: 2.4em; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 0.35em; font-weight: 700; }
@@ -87,11 +94,29 @@
       /* Body text and lists */
       .reveal p, .reveal li { font-size: 1.25em; line-height: 1.5; }
       .reveal ul, .reveal ol { margin-left: 1.2em; }
-      /* Keep code slightly smaller to avoid overflow while card scrolls */
+      /* Keep code slightly smaller to avoid overflow */
       .reveal pre code { font-size: 0.95em; }
       /* Responsive adjustments */
       @media (max-width: 1200px) { :root { --slide-base: 28px; } }
       @media (max-width: 900px)  { :root { --slide-base: 24px; } }
+
+      /* Template layouts (no boxes) */
+      .tpl { display: grid; gap: var(--gap); align-content: start; }
+      .tpl-1col { grid-template-columns: 1fr; }
+      .tpl-2col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tpl-3col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .tpl-4col { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .tpl-60-40 { grid-template-columns: 3fr 2fr; }
+      .tpl-40-60 { grid-template-columns: 2fr 3fr; }
+      .tpl-cols-center { align-items: center; }
+      .tpl .lead { font-size: 1.35em; color: var(--muted); }
+      .tpl .muted { color: var(--muted); }
+      .tpl .kpi { font-size: 3em; font-weight: 800; color: #0f172a; }
+      .tpl .kpi-label { color: var(--muted); margin-top: -6px; }
+      .tpl img { max-width: 100%; height: auto; border-radius: 12px; }
+      .checklist li { list-style: "✔  "; padding-left: 0.25em; }
+      .quote { font-size: 2em; line-height: 1.35; }
+      .quote cite { display: block; margin-top: 8px; color: var(--muted); font-size: 0.8em; }
     </style>
   </head>
   <body>
