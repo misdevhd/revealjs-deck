@@ -89,8 +89,14 @@
       .reveal h1 { font-size: 3.2em; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 0.35em; font-weight: 800; }
       .reveal h2 { font-size: 2.4em; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 0.35em; font-weight: 700; }
       .reveal h3 { font-size: 1.8em; line-height: 1.2; margin: 0 0 0.3em; font-weight: 650; }
+
+      /* Center the top title above content */
+      .reveal .slides>section > h1:first-child,
+      .reveal .slides>section > h2:first-child,
+      .reveal .slides>section > h3:first-child { text-align: center; margin-left: auto; margin-right: auto; }
+
       /* Subtitle = first paragraph following an H1 */
-      .reveal .slides>section h1 + p { font-size: 1.6em; line-height: 1.25; margin-top: -0.15em; color: #333; font-weight: 500; }
+      .reveal .slides>section h1 + p { font-size: 1.6em; line-height: 1.25; margin-top: -0.15em; color: #333; font-weight: 500; text-align: center; }
       /* Body text and lists */
       .reveal p, .reveal li { font-size: 1.25em; line-height: 1.5; }
       .reveal ul, .reveal ol { margin-left: 1.2em; }
@@ -103,7 +109,7 @@
       /* Template layouts (no boxes) */
       .tpl { display: grid; gap: var(--gap); align-content: start; }
       /* If a heading is placed inside the template container, force it above the columns */
-      .tpl > h1, .tpl > h2, .tpl > h3:first-child { grid-column: 1 / -1; margin-bottom: 0.35em; }
+      .tpl > h1, .tpl > h2, .tpl > h3:first-child { grid-column: 1 / -1; margin-bottom: 0.35em; text-align: center; justify-self: center; }
       .tpl-1col { grid-template-columns: 1fr; }
       .tpl-2col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .tpl-3col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
