@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Reveal.js Talk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Reveal.js core CSS and a theme -->
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/black.css" id="theme" />
+
+    <!-- Optional: code syntax highlighting -->
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/plugin/highlight/monokai.css" />
+    <style>
+      /* Optional custom tweaks */
+      .reveal section img { max-height: 70vh; }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- Load slides from Markdown file -->
+        <section
+          data-markdown="slides.md"
+          data-separator="^\r?\n---\r?\n$"
+          data-separator-vertical="^\r?\n--\r?\n$"
+          data-separator-notes="^Note:"
+        ></section>
+      </div>
+    </div>
+
+    <!-- Reveal.js core and plugins (via CDN) -->
+    <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+    <script src="https://unpkg.com/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="https://unpkg.com/reveal.js/plugin/highlight/highlight.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,          // URL updates with slide index
+        slideNumber: true,   // Show slide numbers
+        controls: true,
+        progress: true,
+        center: true,
+        transition: 'slide', // 'none', 'fade', 'slide', 'convex', 'concave', 'zoom'
+        plugins: [ RevealMarkdown, RevealHighlight ]
+      });
+    </script>
+  </body>
+</html>
