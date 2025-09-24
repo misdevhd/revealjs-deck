@@ -7,16 +7,23 @@
 
     <!-- Reveal.js core CSS and a theme -->
     <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css" />
-    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/league.css" id="theme" />
 
     <!-- Optional: code syntax highlighting -->
     <link rel="stylesheet" href="https://unpkg.com/reveal.js/plugin/highlight/monokai.css" />
     <style>
       /* Optional custom tweaks */
       .reveal section img { max-height: 70vh; }
+      /* Logo overlay */
+      .branding { position: fixed; top: 12px; right: 12px; z-index: 42; }
+      .branding img { height: 40px; opacity: 0.95; }
+      @media print { .branding { display: none; } }
     </style>
   </head>
   <body>
+    <div class="branding">
+      <img src="images/logo.png" alt="Logo" />
+    </div>
     <div class="reveal">
       <div class="slides">
         <!-- Load slides from Markdown file -->
