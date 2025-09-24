@@ -87,9 +87,12 @@
       /* Card header with logo inside the card */
       .card-header {
         display: flex;
-        justify-content: flex-end;
+        justify-content: flex-start; /* left-align the logo */
         align-items: flex-start;
-        margin-bottom: 12px;
+        padding-bottom: 10px;
+        margin-bottom: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12); /* subtle separator */
+        width: 100%;
       }
       .card-header img {
         height: 200px;
@@ -154,7 +157,7 @@
           allSections.push(...s.querySelectorAll(':scope>section'));
         });
         allSections.forEach(sec => {
-          if (sec.hasAttribute('data-background') || sec.classList.contains('no-card')) return;
+          if (sec.classList.contains('no-card')) return; // only skip when explicitly opted-out
           if (sec.querySelector(':scope > .slide-card')) return;
           const wrapper = document.createElement('div');
           wrapper.className = 'slide-card';
