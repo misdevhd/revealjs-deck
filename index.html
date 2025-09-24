@@ -22,6 +22,10 @@
         width: 100%;
         height: 100%;
         padding: var(--slide-pad-block, 48px) var(--slide-pad-inline, 56px);
+        display: flex;              /* stack title over content */
+        flex-direction: column;     /* vertical flow */
+        gap: var(--gap);            /* consistent spacing */
+        align-items: stretch;       /* let inner grids take full width */
       }
 
       /* Gradient heading and divider */
