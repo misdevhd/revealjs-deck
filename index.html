@@ -136,6 +136,16 @@
     <script src="https://unpkg.com/reveal.js/plugin/markdown/markdown.js"></script>
     <script src="https://unpkg.com/reveal.js/plugin/highlight/highlight.js"></script>
     <script>
+      // Cache-bust slides.md to avoid CDN/browser caching during updates
+      (function(){
+        const mdSection = document.querySelector('.reveal .slides>section[data-markdown]');
+        if (mdSection) {
+          const src = mdSection.getAttribute('data-markdown');
+          const sep = src.includes('?') ? '&' : '?';
+          mdSection.setAttribute('data-markdown', src + sep + 'v=' + Date.now());
+        }
+      })();
+
       Reveal.initialize({
         hash: true,          // URL updates with slide index
         slideNumber: true,   // Show slide numbers
@@ -173,7 +183,7 @@
             const header = document.createElement('div');
             header.className = 'card-header';
             const img = new Image();
-            img.src = 'images/Logo%20-%20Cheng%20%26%20Co%20Group_%20v1%20Official%20logo_%202025.png';
+            img.src = 'images/Logo%20-%20Cheng%20%26%20Co%20Group_%20v1%20Official%20logo_%202025.png?v=' + Date.now();
             img.alt = 'Cheng & Co Group Logo';
             header.appendChild(img);
             card.insertBefore(header, card.firstChild);
