@@ -17,7 +17,7 @@
 
       /* Content card sizing + scrolling */
       .reveal .slides .slide-card {
-        width: min(1400px, 95vw);
+        width: min(1700px, 98vw);
         max-height: 85vh;
         overflow: auto;
         margin: 0 auto;
@@ -66,6 +66,9 @@
         controls: true,
         progress: true,
         center: true,
+        width: 1600,         // widen base slide width
+        height: 900,         // 16:9
+        margin: 0.05,        // reduce margins to allow more content width
         transition: 'slide', // 'none', 'fade', 'slide', 'convex', 'concave', 'zoom'
         plugins: [ RevealMarkdown, RevealHighlight ]
       });
