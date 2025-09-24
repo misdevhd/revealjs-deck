@@ -102,6 +102,8 @@
 
       /* Template layouts (no boxes) */
       .tpl { display: grid; gap: var(--gap); align-content: start; }
+      /* If a heading is placed inside the template container, force it above the columns */
+      .tpl > h1, .tpl > h2, .tpl > h3:first-child { grid-column: 1 / -1; margin-bottom: 0.35em; }
       .tpl-1col { grid-template-columns: 1fr; }
       .tpl-2col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .tpl-3col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
