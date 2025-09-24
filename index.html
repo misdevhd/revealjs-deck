@@ -16,19 +16,12 @@
       .reveal section img { max-height: 70vh; }
 
       /* Content card sizing + scrolling */
-      .reveal .slides .slide-card {
-        position: relative;
+      /* Full-bleed slide content (no box) */
+      .reveal .slides > section {
+        box-sizing: border-box;
         width: 100%;
         height: 100%;
-        overflow: auto;
-        margin: 0;
         padding: var(--slide-pad-block, 48px) var(--slide-pad-inline, 56px);
-        box-sizing: border-box;
-        border-radius: 0; /* full-bleed to slide edges */
-        color: #0f172a; /* slate-900 */
-        background: #ffffff;
-        border: none;
-        box-shadow: none;
       }
 
       /* Gradient heading and divider */
@@ -90,7 +83,7 @@
       .reveal h2 { font-size: 2.4em; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 0.35em; font-weight: 700; }
       .reveal h3 { font-size: 1.8em; line-height: 1.2; margin: 0 0 0.3em; font-weight: 650; }
       /* Subtitle = first paragraph following an H1 */
-      .reveal .slide-card h1 + p { font-size: 1.6em; line-height: 1.25; margin-top: -0.15em; color: #333; font-weight: 500; }
+      .reveal .slides>section h1 + p { font-size: 1.6em; line-height: 1.25; margin-top: -0.15em; color: #333; font-weight: 500; }
       /* Body text and lists */
       .reveal p, .reveal li { font-size: 1.25em; line-height: 1.5; }
       .reveal ul, .reveal ol { margin-left: 1.2em; }
@@ -142,31 +135,7 @@
         plugins: [ RevealMarkdown, RevealHighlight ]
       });
       // Wrap slide contents in a centered "card" after Reveal is ready
-      Reveal.on('ready', function() {
-        const rootSections = Array.from(document.querySelectorAll('.reveal .slides>section'));
-        const allSections = [];
-        rootSections.forEach(s => {
-          allSections.push(s);
-          allSections.push(...s.querySelectorAll(':scope>section'));
-        });
-        allSections.forEach(sec => {
-          if (sec.classList.contains('no-card')) return; // only skip when explicitly opted-out
-          if (sec.querySelector(':scope > .slide-card')) return;
-          const wrapper = document.createElement('div');
-          wrapper.className = 'slide-card';
-          while (sec.firstChild) wrapper.appendChild(sec.firstChild);
-          sec.appendChild(wrapper);
-        });
-
-        // Make slide-cards scrollable and prevent Reveal from hijacking wheel/touch within them
-        const cards = document.querySelectorAll('.slide-card');
-        cards.forEach(card => {
-          card.style.webkitOverflowScrolling = 'touch'; // smooth scrolling on iOS
-          card.addEventListener('wheel', e => e.stopPropagation(), { passive: true });
-          card.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
-          card.addEventListener('touchmove', e => e.stopPropagation(), { passive: true });
-        });
-      });
+      // No wrapper needed; content is full-bleed and responsive
     </script>
   </body>
 </html>
