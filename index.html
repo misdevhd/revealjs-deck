@@ -7,7 +7,7 @@
 
     <!-- Reveal.js core CSS and a theme -->
     <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css" />
-    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/league.css" id="theme" />
+    <link rel="stylesheet" href="css/apple.css" id="theme" />
 
     <!-- Optional: code syntax highlighting -->
     <link rel="stylesheet" href="https://unpkg.com/reveal.js/plugin/highlight/monokai.css" />
@@ -49,6 +49,23 @@
         center: true,
         transition: 'slide', // 'none', 'fade', 'slide', 'convex', 'concave', 'zoom'
         plugins: [ RevealMarkdown, RevealHighlight ]
+      });
+      // Wrap slide contents in a centered "card" after Reveal is ready
+      Reveal.on('ready', function() {
+        const rootSections = Array.from(document.querySelectorAll('.reveal .slides>section'));
+        const allSections = [];
+        rootSections.forEach(s => {
+          allSections.push(s);
+          allSections.push(...s.querySelectorAll(':scope>section'));
+        });
+        allSections.forEach(sec => {
+          if (sec.hasAttribute('data-background') || sec.classList.contains('no-card')) return;
+          if (sec.querySelector(':scope > .slide-card')) return;
+          const wrapper = document.createElement('div');
+          wrapper.className = 'slide-card';
+          while (sec.firstChild) wrapper.appendChild(sec.firstChild);
+          sec.appendChild(wrapper);
+        });
       });
     </script>
   </body>
