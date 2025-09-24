@@ -125,7 +125,18 @@
       .reveal a { color: var(--brand); }
 
       /* Hero logo (cover slide only) */
-      .hero-logo { display:block; margin: 0 auto 12px; height: clamp(48px, 8vh, 96px); }
+      .hero-logo { display:block; margin: 0 auto 16px; height: clamp(96px, 12vh, 180px); }
+
+      /* Cover slide larger typography */
+      .reveal .slides section.cover > h1:first-child {
+        font-size: clamp(3.2em, 6vw, 5.2em);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+      }
+      .reveal .slides section.cover h1 + p,
+      .reveal .slides section.cover p.subtitle {
+        font-size: clamp(1.4em, 2.6vw, 2.2em);
+      }
     </style>
   </head>
   <body>
