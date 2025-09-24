@@ -14,9 +14,28 @@
     <style>
       /* Optional custom tweaks */
       .reveal section img { max-height: 70vh; }
+
+      /* Content card sizing + scrolling */
+      .reveal .slides .slide-card {
+        width: min(1200px, 92vw);
+        max-height: 85vh;
+        overflow: auto;
+        margin: 0 auto;
+        padding: 32px 40px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.0); /* keep transparent; adjust if you want a card bg */
+        box-shadow: none; /* set a subtle shadow if you want: 0 6px 24px rgba(0,0,0,0.08) */
+      }
+
+      /* Improve code block scrolling inside slides */
+      .reveal pre {
+        max-height: 70vh;
+        overflow: auto;
+      }
+
       /* Logo overlay */
       .branding { position: fixed; top: 12px; right: 12px; z-index: 42; }
-      .branding img { height: 40px; opacity: 0.95; }
+      .branding img { height: 80px; opacity: 0.95; }
       @media print { .branding { display: none; } }
     </style>
   </head>
@@ -65,6 +84,15 @@
           wrapper.className = 'slide-card';
           while (sec.firstChild) wrapper.appendChild(sec.firstChild);
           sec.appendChild(wrapper);
+        });
+
+        // Make slide-cards scrollable and prevent Reveal from hijacking wheel/touch within them
+        const cards = document.querySelectorAll('.slide-card');
+        cards.forEach(card => {
+          card.style.webkitOverflowScrolling = 'touch'; // smooth scrolling on iOS
+          card.addEventListener('wheel', e => e.stopPropagation(), { passive: true });
+          card.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+          card.addEventListener('touchmove', e => e.stopPropagation(), { passive: true });
         });
       });
     </script>
