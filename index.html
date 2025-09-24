@@ -17,14 +17,14 @@
 
       /* Content card sizing + scrolling */
       .reveal .slides .slide-card {
-        width: min(1920px, 98vw);
-        max-height: 85vh;
+        width: min(1920px, 99vw);
+        max-height: 92vh;
         overflow: auto;
         margin: 0 auto;
-        padding: 32px 40px;
+        padding: 48px 56px;
         border-radius: 14px;
-        background: rgba(255, 255, 255, 0.0); /* keep transparent; adjust if you want a card bg */
-        box-shadow: none; /* set a subtle shadow if you want: 0 6px 24px rgba(0,0,0,0.08) */
+        background: rgba(255, 255, 255, 0.0);
+        box-shadow: none;
       }
 
       /* Improve code block scrolling inside slides */
@@ -33,10 +33,18 @@
         overflow: auto;
       }
 
-      /* Logo overlay */
-      .branding { position: fixed; top: 12px; right: 12px; z-index: 42; }
-      .branding img { height: 200px; opacity: 0.95; }
-      @media print { .branding { display: none; } }
+      /* Card header with logo inside the card */
+      .card-header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        margin-bottom: 12px;
+      }
+      .card-header img {
+        height: 200px;
+        opacity: 0.95;
+      }
+      @media print { .card-header { display: none; } }
 
       /* Typography scale: bigger and differentiated headings/subtitle/body */
       :root { --slide-base: 32px; }
@@ -57,9 +65,6 @@
     </style>
   </head>
   <body>
-    <div class="branding">
-      <img src="images/Logo%20-%20Cheng%20%26%20Co%20Group_%20v1%20Official%20logo_%202025.png" alt="Cheng & Co Group Logo" />
-    </div>
     <div class="reveal">
       <div class="slides">
         <!-- Load slides from Markdown file -->
@@ -85,7 +90,7 @@
         center: true,
         width: 1800,         // widen base slide width
         height: 900,         // 16:9
-        margin: 0.05,        // reduce margins to allow more content width
+        margin: 0,           // remove margins for maximum usable area
         transition: 'slide', // 'none', 'fade', 'slide', 'convex', 'concave', 'zoom'
         plugins: [ RevealMarkdown, RevealHighlight ]
       });
@@ -106,9 +111,20 @@
           sec.appendChild(wrapper);
         });
 
-        // Make slide-cards scrollable and prevent Reveal from hijacking wheel/touch within them
+        // Make slide-cards scrollable and add logo header inside each card
         const cards = document.querySelectorAll('.slide-card');
         cards.forEach(card => {
+          // Insert a header with the logo at the top of the card (once)
+          if (!card.querySelector('.card-header')) {
+            const header = document.createElement('div');
+            header.className = 'card-header';
+            const img = new Image();
+            img.src = 'images/Logo%20-%20Cheng%20%26%20Co%20Group_%20v1%20Official%20logo_%202025.png';
+            img.alt = 'Cheng & Co Group Logo';
+            header.appendChild(img);
+            card.insertBefore(header, card.firstChild);
+          }
+          // Enable smooth scrolling and prevent Reveal from hijacking wheel/touch within the card
           card.style.webkitOverflowScrolling = 'touch'; // smooth scrolling on iOS
           card.addEventListener('wheel', e => e.stopPropagation(), { passive: true });
           card.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
