@@ -17,7 +17,7 @@
 
       /* Content card sizing + scrolling */
       /* Full-bleed slide content (no box) */
-      .reveal .slides > section {
+      .reveal .slides section {
         box-sizing: border-box;
         width: 100%;
         height: 100%;
@@ -44,10 +44,7 @@
         border-radius: 2px;
       }
 
-      /* Layout and feature grid */
-      .hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 40px; align-items: center; }
-      @media (max-width: 1200px) { .hero-grid { grid-template-columns: 1fr; } }
-
+      /* Feature grid blocks (used in some templates) */
       .feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 28px 36px; margin-top: 20px; }
       .feature { display: grid; grid-template-columns: 56px 1fr; gap: 12px; align-items: start; }
       .feature .icon {
@@ -58,20 +55,6 @@
       }
       .feature h3 { margin: 0; font-size: 1.25em; color: #0f172a; }
       .feature p { margin: 6px 0 0; color: #334155; font-size: 0.95em; }
-
-      /* Illustration area on the right */
-      .illustration { position: relative; display: grid; place-items: center; }
-      .illustration .glow {
-        position: absolute; width: 520px; height: 520px; border-radius: 50%;
-        background: radial-gradient(closest-side, rgba(124,58,237,0.5), rgba(59,130,246,0.15) 60%, transparent 70%);
-        filter: blur(10px); transform: translateX(10%);
-      }
-      .mockup {
-        position: relative; z-index: 1; width: 100%; max-width: 420px; height: 560px;
-        border-radius: 40px; border: 1px solid rgba(255,255,255,0.12);
-        background: linear-gradient(180deg, #1f2937, #0b1220);
-        box-shadow: inset 0 0 120px rgba(124,58,237,0.18), 0 20px 60px rgba(0,0,0,0.55);
-      }
 
       /* Improve code block scrolling inside slides */
       .reveal pre {
@@ -95,12 +78,12 @@
       .reveal h3 { font-size: 1.8em; line-height: 1.2; margin: 0 0 0.3em; font-weight: 650; }
 
       /* Center the top title above content */
-      .reveal .slides>section > h1:first-child,
-      .reveal .slides>section > h2:first-child,
-      .reveal .slides>section > h3:first-child { text-align: center; margin-left: auto; margin-right: auto; }
+      .reveal .slides section > h1:first-child,
+      .reveal .slides section > h2:first-child,
+      .reveal .slides section > h3:first-child { text-align: center; margin-left: auto; margin-right: auto; }
 
       /* Subtitle = first paragraph following an H1 */
-      .reveal .slides>section h1 + p { font-size: 1.6em; line-height: 1.25; margin-top: -0.15em; color: #333; font-weight: 500; text-align: center; }
+      .reveal .slides section h1 + p { font-size: 1.6em; line-height: 1.25; margin-top: -0.15em; color: #333; font-weight: 500; text-align: center; }
       /* Body text and lists */
       .reveal p, .reveal li { font-size: 1.25em; line-height: 1.5; }
       .reveal ul, .reveal ol { margin-left: 1.2em; }
