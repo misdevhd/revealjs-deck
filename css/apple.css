@@ -4,6 +4,8 @@
   --card-radius: 28px;
   --card-shadow: 0 20px 40px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.06);
   --hairline: rgba(0,0,0,0.06);
+  --card-max-width: 1100px;          /* consistent width across slides */
+  --card-viewport-vpad: 160px;       /* total vertical padding reserved outside the card */
 }
 
 html, body {
@@ -27,6 +29,13 @@ html, body {
 .reveal .slides {
   text-align: left;
 }
+/* Ensure slides center the card consistently (horizontal and vertical stacks) */
+.reveal .slides > section,
+.reveal .slides > section > section {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Card wrapper that will contain slide content */
 .reveal .slides section > .slide-card {
@@ -36,10 +45,11 @@ html, body {
   box-shadow: var(--card-shadow);
   padding: clamp(24px, 4vw, 56px);
   margin: 0 auto;
-  width: min(92vw, 1100px);
-  max-height: calc(100vh - 160px);
+  width: min(92vw, var(--card-max-width));
+  height: calc(100vh - var(--card-viewport-vpad));
   overflow: auto; /* Prevent content from exceeding card */
   -webkit-overflow-scrolling: touch;
+  box-sizing: border-box; /* include padding in fixed height */
 }
 
 /* Make images look nice inside cards */
